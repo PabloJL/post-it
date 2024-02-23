@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function Post({ image, name, postTitle, id }) {
+function Post({ image, name, postTitle, id, comments }) {
   return (
     <div className=" bg-white my-8 p-8 rounded-lg">
       <div className=" flex items-center gap-2">
@@ -25,7 +25,7 @@ function Post({ image, name, postTitle, id }) {
             className=" text-sm font-semibold
            text-gray-700"
           >
-            Comments
+            {comments?.length} Comments
           </p>
         </Link>
       </div>

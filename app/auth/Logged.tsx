@@ -16,7 +16,7 @@ function Logged({ image }: User) {
       >
         Sign Out
       </button>
-      <Link href={"/"}>
+      <Link href={"/dashboard"}>
         <Image
           width={50}
           height={50}

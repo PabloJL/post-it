@@ -18,10 +18,11 @@ function Logged({ image }: User) {
       </button>
       <Link href={"/"}>
         <Image
-          width={64}
-          height={64}
+          width={50}
+          height={50}
           src={image}
           alt="profile picture"
+          className="rounded-full"
           priority
         />
       </Link>

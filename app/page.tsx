@@ -4,6 +4,7 @@ import AddPost from "./components/AddPost";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Post from "./components/Post";
+import { PostType } from "./types/post";
 
 //Fetch all posts
 
@@ -13,7 +14,7 @@ const allPosts = async () => {
 };
 
 export default function Home() {
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery<PostType[]>({
     queryFn: allPosts,
     queryKey: ["posts"],
   });

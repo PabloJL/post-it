@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../prisma/client";
+import prisma from "../../../prisma/client.js";
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     // Fetch All posts
+
     try {
       const data = await prisma.post.findMany({
         include: { user: true, Comment: true },

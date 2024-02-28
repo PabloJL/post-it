@@ -6,6 +6,11 @@ export type PostsType = {
     name: string;
     image: string;
   };
+  hearts: {
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
   Comment?: {
     createdAt: string;
     id: string;

@@ -32,6 +32,7 @@ export default function Home() {
           name={post.user.name}
           image={post.user.image}
           postTitle={post.title}
+          likes={post.hearts}
           id={post.id}
         />
       ))}

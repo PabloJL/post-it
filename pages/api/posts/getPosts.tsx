@@ -10,7 +10,7 @@ export default async function handler(
 
     try {
       const data = await prisma.post.findMany({
-        include: { user: true, Comment: true },
+        include: { user: true, Comment: true, hearts: true },
         orderBy: { createdAt: "desc" },
       });
       res.status(200).json(data);

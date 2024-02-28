@@ -27,7 +27,7 @@ function AddComment({ id }: PostProps) {
       .then((response) => {
         // Success handler
         onSuccess: toast.success("Comment has been made!", { id: toastPostID });
-        // queryClient.invalidateQueries(["posts"]);
+        queryClient.invalidateQueries(["detail-post"]);
         setIsDisabled(false);
         setTitle("");
         return response;
@@ -54,7 +54,7 @@ function AddComment({ id }: PostProps) {
 
   return (
     <form onSubmit={submitComment} className=" my-8">
-      <h3>Add a comment</h3>
+      {/* <h3>Add a comment</h3> */}
       <div className="flex flex-col my-2">
         <input
           onChange={(e) => setTitle(e.target.value)}
@@ -65,7 +65,12 @@ function AddComment({ id }: PostProps) {
           className="p-4 text-lg rounded-md my-2"
         />
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 justify-end">
+        <p
+          className={`font-semibold  ${
+            title.length > 300 ? "text-red-700" : "text-gray-700"
+          } `}
+        >{`${title.length}/300`}</p>
         <button
           disabled={isDisabled}
           className=" text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
@@ -73,11 +78,6 @@ function AddComment({ id }: PostProps) {
         >
           Add Comment 🚀
         </button>
-        <p
-          className={`font-bold  ${
-            title.length > 300 ? "text-red-700" : "text-gray-700"
-          } `}
-        >{`${title.length}/300`}</p>
       </div>
     </form>
   );

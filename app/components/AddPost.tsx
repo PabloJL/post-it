@@ -17,7 +17,7 @@ function AddPost() {
       .then((response) => {
         // Success handler
         onSuccess: toast.success("Post has been made!🔥", { id: toastPostID });
-        queryClient.invalidateQueries(["posts"]);
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
         setIsDisabled(false);
         setTitle("");
         return response;

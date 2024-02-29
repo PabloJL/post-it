@@ -3,6 +3,7 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Nav from "./auth/Nav";
 import QueryWrapper from "./auth/QueryWrapper";
+import AuthContext from "./auth/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} bg-gray-200`}>
         <QueryWrapper>
-          <Nav />
-          {children}
+          <AuthContext>
+            <Nav />
+            {children}
+          </AuthContext>
         </QueryWrapper>
       </body>
     </html>

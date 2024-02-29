@@ -27,7 +27,7 @@ function AddComment({ id }: PostProps) {
       .then((response) => {
         // Success handler
         onSuccess: toast.success("Comment has been made!", { id: toastPostID });
-        queryClient.invalidateQueries(["detail-post"]);
+        queryClient.invalidateQueries({ queryKey: ["detail-post"] });
         setIsDisabled(false);
         setTitle("");
         return response;

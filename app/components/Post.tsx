@@ -14,7 +14,7 @@ function Post({ image, name, postTitle, id, comments, likes, userId }) {
       .post("/api/posts/addLike", { id })
       .then((response) => {
         // Success handler
-        queryClient.invalidateQueries(["posts"]);
+        queryClient.invalidateQueries({ queryKey: ["posts"] });
         return response;
       })
       .catch((error) => {

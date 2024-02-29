@@ -30,7 +30,7 @@ function EditPost({ image, name, title, comments, id }: EditProps) {
       .then((data) => {
         // Success handler
         toast.success("Post has been deleted!", { id: toastPostID });
-        queryClient.invalidateQueries(["auth-posts"]);
+        queryClient.invalidateQueries({ queryKey: ["auth-posts"] });
       })
       .catch((error) => {
         // Error handler

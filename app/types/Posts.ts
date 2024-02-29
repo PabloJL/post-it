@@ -3,6 +3,7 @@ export type PostsType = {
   id: string;
   createdAt: string;
   user: {
+    id: string;
     name: string;
     image: string;
   };

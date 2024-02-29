@@ -30,6 +30,7 @@ export default function Home() {
           comments={post.Comment}
           key={post.id}
           name={post.user.name}
+          userId={post.user.id}
           image={post.user.image}
           postTitle={post.title}
           likes={post.hearts}

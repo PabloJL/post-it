@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-function Post({ image, name, postTitle, id, comments, likes }) {
+function Post({ image, name, postTitle, id, comments, likes, userId }) {
   const [like, setLike] = useState(false);
   const queryClient = useQueryClient();
   //   Create a post
@@ -30,6 +30,15 @@ function Post({ image, name, postTitle, id, comments, likes }) {
     setLike(!like);
     mutate();
   };
+
+  useEffect(() => {
+    // Check if the current user has liked the post
+    likes.map((like) => {
+      if (like.userId === userId && like.postId === id) {
+        setLike(true);
+      }
+    });
+  }, [id, userId]);
 
   return (
     <div className=" bg-white my-8 p-8 rounded-lg">

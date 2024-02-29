@@ -33,7 +33,7 @@ function Post({ image, name, postTitle, id, comments, likes, userId }) {
 
   useEffect(() => {
     // Check if the current user has liked the post
-    likes.map((like) => {
+    likes?.map((like) => {
       if (like.userId === userId && like.postId === id) {
         setLike(true);
       }

@@ -23,13 +23,13 @@ function PostDetail(url: URL) {
     queryFn: () => fetchDetails(url.params.slug),
   });
   if (isLoading) return "Loading ...";
-  console.log(data);
   return (
     <div>
       <Post
         id={data?.id}
         name={data?.user.name}
         image={data?.user.image}
+        userId={data?.user.id}
         postTitle={data?.title}
         comments={data?.Comment}
         likes={data?.hearts}

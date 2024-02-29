@@ -1,22 +1,25 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
+import Image, from "next/image";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { useState } from "react";
 
 type User = {
   image: string;
 };
 
+
 function Logged({ image }: User) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <li className=" flex gap-8 items-center">
-      <button
-        onClick={() => signOut()}
-        className=" bg-gray-700 text-white text-sm px-6 py-2 rounded-md"
-      >
-        Sign Out
-      </button>
-      <Link href={"/dashboard"}>
+      <div className=" relative">
+      <div onClick={toggleMenu}>
         <Image
           width={50}
           height={50}
@@ -25,7 +28,17 @@ function Logged({ image }: User) {
           className="rounded-full"
           priority
         />
-      </Link>
+      </div>
+      {isMenuOpen && (
+        <div className="menu absolute top-full right-2 mt-1 w-40 bg-white  p-8 rounded-lg shadow-sm text-end ">
+          {/* Menu content goes here */}
+          <ul>
+            <li className=" font-normal"><Link href={"/dashboard"} onClick={toggleMenu}>Profile</Link></li>
+            <li className=" cursor-pointer text-red-600 mt-2" onClick={()=>signOut()}>Sign out</li>
+          </ul>
+        </div>
+      )}
+    </div>
     </li>
   );
 }

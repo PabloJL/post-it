@@ -5,7 +5,33 @@ import { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-function Post({ image, name, postTitle, id, comments, likes, userId }) {
+type PostProps = {
+  id: string;
+  image: string;
+  name: string;
+  postTitle: string;
+  comments?: {
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
+  likes: {
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
+  userId: string;
+};
+
+function Post({
+  image,
+  name,
+  postTitle,
+  id,
+  comments,
+  likes,
+  userId,
+}: PostProps) {
   const [like, setLike] = useState(false);
   const queryClient = useQueryClient();
   //   Create a post

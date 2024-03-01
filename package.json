@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "vercel-build": "prisma generate && next build",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
+    "prisma": "^5.10.2",
     "@types/node": "^20.11.19",
     "@types/react": "^18",
     "@types/react-dom": "^18",

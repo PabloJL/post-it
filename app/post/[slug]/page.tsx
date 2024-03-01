@@ -35,7 +35,7 @@ function PostDetail(url: URL) {
         likes={data?.hearts}
       />
       <AddComment id={data?.id} />
-      {data?.Comment?.map((comment) => (
+      {data?.Comment?.map((comment: any) => (
         <div
           // animate={{ opacity: 1, scale: 1 }}
           // initial={{ opacity: 0, scale: 0.8 }}
